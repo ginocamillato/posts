@@ -16,10 +16,10 @@ Route::group([
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh',[AuthController::class, 'refresh']);
     Route::post('me', [AuthController::class, 'me']);
+    Route::post('users', [UserController::class, 'store'])->name('users.store');
 
     });
     Route::middleware('auth:api')->group(function () {
-        Route::post('users', [UserController::class, 'store'])->name('users.store');
         Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
         Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
         Route::get('users/{user}', [UserController::class, 'show'])->name('users.show');
